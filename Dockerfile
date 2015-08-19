@@ -7,6 +7,12 @@ MAINTAINER Zhang Peihao (zhangpeihao@gmail.com)
 RUN yum -y --noplugins --verbose update
 RUN yum -y --noplugins --verbose install git wget tar
 
+RUN wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u20-b26/jdk-8u20-linux-x64.rpm -O /tmp/jdk-8u20-linux-x64.rpm && \
+    rpm -i /tmp/jdk-8u20-linux-x64.rpm && \
+    rm /tmp/jdk-8u20-linux-x64.rpm
+
+ENV JAVA_HOME /usr/java/latest
+
 RUN wget http://www.apache.org/dist//maven/binaries/apache-maven-3.2.2-bin.tar.gz && \
     tar zxvf apache-maven-3.2.2-bin.tar.gz && \
     mv ./apache-maven-3.2.2 /usr/local/ && \
@@ -16,7 +22,6 @@ RUN wget http://www.apache.org/dist//maven/binaries/apache-maven-3.2.2-bin.tar.g
     cd dubbo && \
     git checkout -b dubbo-2.4.11 && \
     mvn clean install -Dmaven.test.skip
-
 ENV DUBBO_HOME /usr/local/dubbo
 
 CMD cd /usr/local/dubbo/dubbo-admin && mvn jetty:run -Ddubbo.registry.address=zookeeper://127.0.0.1:2181
