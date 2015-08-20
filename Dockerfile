@@ -38,7 +38,9 @@ RUN wget http://www.apache.org/dist//maven/binaries/apache-maven-3.2.2-bin.tar.g
     cd /usr/local && \
     git clone https://github.com/alibaba/dubbo.git dubbo && \
     cd dubbo && \
-    mvn clean install -Dmaven.test.skip
+    mvn clean install -Dmaven.test.skip && \
+	cd dubbo-admin && \
+	mvn jetty:deploy-war
 	
 ENV DUBBO_HOME /usr/local/dubbo
 
