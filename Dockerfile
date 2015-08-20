@@ -7,7 +7,7 @@ MAINTAINER Zhang Peihao (zhangpeihao@gmail.com)
 RUN yum -y --noplugins --verbose update
 RUN yum -y --noplugins --verbose install git wget tar
 
-wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.rpm -O /tmp/jdk-7u80-linux-x64.rpm
+RUN wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.rpm -O /tmp/jdk-7u80-linux-x64.rpm
 ENV JAVA_HOME /usr/java/latest
 
 #RUN wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u20-b26/jdk-8u20-linux-x64.rpm -O /tmp/jdk-8u20-linux-x64.rpm && \
