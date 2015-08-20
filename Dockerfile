@@ -40,7 +40,7 @@ RUN wget http://www.apache.org/dist//maven/binaries/apache-maven-3.2.2-bin.tar.g
     cd dubbo && \
     mvn clean install -Dmaven.test.skip && \
 	cd dubbo-admin && \
-	mvn jetty:deploy-war
+	mvn jetty:stop
 	
 ENV DUBBO_HOME /usr/local/dubbo
 
